@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronRight, ExternalLink, Download, MessageCircle } from 'lucide-react';
 import SectionHeading from './SectionHeading';
+import resume from "../assets/Resume_Prerna_Mittal.pdf";
 
 const Experience = () => {
   return (
@@ -110,7 +111,7 @@ const Experience = () => {
 
                 <div className="flex flex-wrap gap-4 transform transition-all duration-300 
                   group-hover:translate-y-[-5px]">
-                  <a href="/resume.pdf" download
+                  <a href={resume} download
                     className="inline-flex items-center px-6 py-3 rounded-lg 
                       bg-[var(--amber)] text-[var(--blue)] hover:bg-[var(--blue)] hover:text-white
                       transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg">
