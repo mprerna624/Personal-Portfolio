@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --offWhite : #E8FFE5;
+    --blue: #002642;
+    --black: #02040F;
+    --maroon: #9B1B30;
+    --amber: #E59500;
+    --lightYellow: #fcd396;
+    --lightNavbarBg: #f9f2f3;
+    --darkNavbarBg: #4d0e19;
+    --lightSectionBg: #f8f5f1;
+    --darkSectionBg: #1a1a2e;
+
+    --ff-heading: "Lora", serif;
+    --ff-body: "Nunito", serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--lightSectionBg);
+  font-family: var(--ff-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-heading);
+}
+
+/* Used for my name in Header & Footer */
+.heading-font {
+  font-family: var(--ff-heading);
+}
