@@ -5,7 +5,6 @@ import SectionHeading from './SectionHeading';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [modalClass, setModalClass] = useState('');
   
   const projects = [
     {
@@ -96,21 +95,36 @@ const Projects = () => {
 
   useEffect(() => {
     const dialog = document.querySelector('dialog');
+    
+    const handleDialogClose = () => {
+      // Add the closing animation class
+      dialog?.classList.add('modal-closing');
+      document.body.style.overflow = '';
+      
+      // Wait for animation to complete then cleanup
+      setTimeout(() => {
+        setSelectedProject(null);
+        dialog?.classList.remove('modal-closing');
+      }, 300);
+    };
+  
     const handleBackdropClick = (e) => {
-      const dialogDimensions = dialog.getBoundingClientRect();
-      if (
+      const dialogDimensions = dialog?.getBoundingClientRect();
+      if (dialogDimensions && (
         e.clientX < dialogDimensions.left ||
         e.clientX > dialogDimensions.right ||
         e.clientY < dialogDimensions.top ||
         e.clientY > dialogDimensions.bottom
-      ) {
-        closeModal();
+      )) {
+        dialog.close();
       }
     };
-    
+  
+    dialog?.addEventListener('close', handleDialogClose);
     dialog?.addEventListener('click', handleBackdropClick);
     
     return () => {
+      dialog?.removeEventListener('close', handleDialogClose);
       dialog?.removeEventListener('click', handleBackdropClick);
     };
   }, []);
@@ -121,21 +135,7 @@ const Projects = () => {
     if (dialog) {
       dialog.showModal();
       document.body.style.overflow = 'hidden';
-      setTimeout(() => setModalClass('modal-open'), 10);
     }
-  };
-
-  const closeModal = () => {
-    setModalClass('modal-closing');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      const dialog = document.querySelector('dialog');
-      if (dialog) {
-        dialog.close();
-        setSelectedProject(null);
-        setModalClass('');
-      }
-    }, 300);
   };
 
   return (
@@ -145,17 +145,6 @@ const Projects = () => {
         dialog::backdrop {
           background: rgba(0, 0, 0, 0.5);
           backdrop-filter: blur(4px);
-        }
-        
-        @keyframes modalFadeIn {
-          from { 
-            opacity: 0; 
-            transform: translate(-50%, calc(-50% + 20px));
-          }
-          to { 
-            opacity: 1; 
-            transform: translate(-50%, -50%);
-          }
         }
         
         @keyframes modalFadeOut {
@@ -174,23 +163,19 @@ const Projects = () => {
           to { transform: translateX(0); opacity: 1; }
         }
         
-        .modal-open dialog {
-          animation: modalFadeIn 0.3s ease-out forwards;
-        }
-        
-        .modal-closing dialog {
+        .modal-closing {
           animation: modalFadeOut 0.3s ease-out forwards;
         }
         
-        .stagger-animate {
+        .slideIn-animation {
           opacity: 0;
           animation: slideIn 0.5s ease-out forwards;
         }
         
-        .modal-open .stagger-animate:nth-child(1) { animation-delay: 0.1s; }
-        .modal-open .stagger-animate:nth-child(2) { animation-delay: 0.2s; }
-        .modal-open .stagger-animate:nth-child(3) { animation-delay: 0.3s; }
-        .modal-open .stagger-animate:nth-child(4) { animation-delay: 0.4s; }
+        .modal-open .slideIn-animation:nth-child(1) { animation-delay: 0.1s; }
+        .modal-open .slideIn-animation:nth-child(2) { animation-delay: 0.2s; }
+        .modal-open .slideIn-animation:nth-child(3) { animation-delay: 0.3s; }
+        .modal-open .slideIn-animation:nth-child(4) { animation-delay: 0.4s; }
       `}
     </style>
 
@@ -249,7 +234,7 @@ const Projects = () => {
             max-w-[800px] w-[90%] max-h-[90vh] z-50
             p-0 m-0 border-none bg-transparent overflow-visible
             flex items-center justify-center
-            rounded-lg ${modalClass}
+            rounded-lg
           `}
           onClick={(e) => e.stopPropagation()}
         >
@@ -264,7 +249,7 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/80" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="flex gap-4 mb-4 stagger-animate">
+                  <div className="flex gap-4 mb-4 slideIn-animation">
                     <a
                       href={selectedProject.liveLink}
                       target="_blank"
@@ -288,7 +273,7 @@ const Projects = () => {
               </div>
               
               <div className="p-8">
-                <div className="mb-8 stagger-animate">
+                <div className="mb-8 slideIn-animation">
                   <h3 className="text-3xl font-bold text-[var(--blue)] dark:text-[var(--lightYellow)] mb-2">
                     {selectedProject.title}
                   </h3>
@@ -297,7 +282,7 @@ const Projects = () => {
                   </p>
                 </div>
                 
-                <div className="mb-8 stagger-animate">
+                <div className="mb-8 slideIn-animation">
                   <h4 className="text-lg font-semibold text-[var(--maroon)] dark:text-[var(--amber)] mb-3">
                     Project Overview
                   </h4>
@@ -306,7 +291,7 @@ const Projects = () => {
                   </p>
                 </div>
                 
-                <div className="mb-8 stagger-animate">
+                <div className="mb-8 slideIn-animation">
                   <h4 className="text-lg font-semibold text-[var(--maroon)] dark:text-[var(--amber)] mb-3">
                     Key Highlights
                   </h4>
@@ -323,7 +308,7 @@ const Projects = () => {
                   </ul>
                 </div>
                 
-                <div className="mb-8 stagger-animate">
+                <div className="mb-8 slideIn-animation">
                   <h4 className="text-lg font-semibold text-[var(--maroon)] dark:text-[var(--amber)] mb-3">
                     Technologies Used
                   </h4>
@@ -341,7 +326,7 @@ const Projects = () => {
               </div>
               
               <button
-                onClick={closeModal}
+                onClick={() => document.querySelector('dialog')?.close()}
                 className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 transform hover:rotate-90"
               >
                 <X />

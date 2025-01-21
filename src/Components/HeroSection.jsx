@@ -207,7 +207,7 @@ const HeroSection = () => {
                   {codeLines.map((line, index) => (
                     <div
                       key={index}
-                      className={`min-h-6 py-1 ${index <= currentLine ? 'opacity-100' : 'opacity-0'} transition-all duration-300 hover:translate-x-2 whitespace-pre-wrap break-words`}
+                      className={`min-h-6 py-1 ${index <= currentLine ? 'opacity-100' : 'opacity-0'} transition-all duration-300 group/line whitespace-pre-wrap break-words`}
                       style={{ 
                         color: line.type === 'comment' ? '#4A5568' : 
                               line.type === 'const' ? 'var(--amber)' : 'var(--offWhite)',
@@ -215,11 +215,13 @@ const HeroSection = () => {
                         transition: 'transform 0.3s ease-out'
                       }}
                     >
-                      <span className="mr-4 text-[#4A5568] group-hover:text-[var(--amber)] transition-colors duration-300">{index + 1}</span>
-                      {line.text}
-                      {index === currentLine && showCursor && (
-                        <span className="ml-1 animate-pulse">|</span>
-                      )}
+                      <div className="group-hover/line:translate-x-1.5 transition-transform duration-300">
+                        <span className="mr-4 text-[#4A5568] group-hover:text-[var(--amber)] transition-colors duration-300">{index + 1}</span>
+                        {line.text}
+                        {index === currentLine && showCursor && (
+                          <span className="ml-1 animate-pulse">|</span>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>

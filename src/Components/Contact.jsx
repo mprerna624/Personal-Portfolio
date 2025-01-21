@@ -50,7 +50,7 @@ const Contact = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.1
+      threshold: 0.2
     });
 
     const formSection = document.querySelector('.form-section');
@@ -138,7 +138,7 @@ const Contact = () => {
           textarea:-webkit-autofill,
           textarea:-webkit-autofill:hover,
           textarea:-webkit-autofill:focus {
-            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            box-shadow: 0 0 0px 1000px transparent inset;
             transition: background-color 5000s ease-in-out 0s;
           }
 

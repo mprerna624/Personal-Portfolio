@@ -6,7 +6,7 @@ function SectionHeading({lightColor, darkColor, children, className=''}) {
         <div className={`hidden sm:block h-0.5 w-12 transition-all duration-300 group-hover:w-24 bg-[var(--${lightColor})] dark:bg-[var(--${darkColor})]`} />
         
         <h2 className={`text-3xl md:text-4xl font-semibold tracking-wide uppercase text-center text-[var(--${lightColor})] dark:text-[var(--${darkColor})]
-                       cursor-pointer transition-all duration-300 hover:tracking-widest`}>
+                       cursor-pointer transition-all duration-300 group-hover:tracking-widest`}>
           {children}
         </h2>
 

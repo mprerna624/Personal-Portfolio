@@ -52,23 +52,28 @@ const Skills = () => {
   ];
 
   useEffect(() => {
+    // Check if viewport is mobile size and set appropriate threshold
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const threshold = isMobile ? 0.1 : 0.3;
+
+    // Create single observer with conditional threshold
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold }
     );
 
-    const section = document.getElementById('skills');
-    if (section) {
-      observer.observe(section);
+    const skillCards = document.querySelector('.cards-container');
+    if (skillCards) {
+      observer.observe(skillCards);
     }
 
     return () => {
-      if (section) {
-        observer.unobserve(section);
+      if (skillCards) {
+        observer.unobserve(skillCards);
       }
     };
   }, []);
