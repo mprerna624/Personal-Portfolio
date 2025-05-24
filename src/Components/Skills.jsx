@@ -14,10 +14,10 @@ const Skills = () => {
         "CSS",
         "JavaScript",
         "React JS",
-        "Redux",
-        "Context API",
-        "React-Hook-Form",
+        "Redux Toolkit",
+        "Shadcn/UI",
         "REST APIs",
+        "Context API",
         "Bootstrap",
         "Tailwind CSS",
       ]
@@ -42,11 +42,12 @@ const Skills = () => {
         "GitHub",
         "VS Code",
         "npm",
+        "Render",
+        "Vite",
+        "Vercel", 
+        "EmailJS",
         "TinyMCE Real-Time Text Editor",
         "Appwrite(Backend As a Service)",
-        "Vercel", 
-        "Render",
-        "EmailJS"
       ]
     }
   ];
@@ -170,7 +171,7 @@ const Skills = () => {
           {skills.map((skillGroup, index) => (
             <div 
               key={skillGroup.category}
-              className="skill-card bg-white dark:bg-[var(--black)] rounded-xl shadow-lg p-6 
+              className="skill-card bg-white dark:bg-[var(--black)] rounded-xl shadow-lg py-6 px-4 
                        hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               style={{
                 '--card-index': index,

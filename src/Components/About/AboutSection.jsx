@@ -21,7 +21,7 @@ const AboutSection = () => {
     },
     {
       title: "Recent Work",
-      description: "Recently, I developed a professional website for an NGO named Jan Kalyan Jan Sahyog Foundation, implementing responsive design principles and modern web technologies to create an impactful online presence for this nonprofit organization.",
+      description: "During my internship at BeyondChats, I built a fully responsive onboarding site from scratch using Vite, Tailwind CSS & Shadcn/UI, migrated a CRA+MUI v6 Dashboard project to Vite + MUI v7, and refactored components incrementally to Tailwind & Shadcn/UI while translating Figma designs into pixel-perfect React components.",
       Icon: Globe,
       variant: "secondary",
       circleSize: "large"

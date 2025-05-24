@@ -14,7 +14,7 @@ const Projects = () => {
       fullDesc: "Developed a professional and engaging website for a nonprofit organization, highlighting its initiatives and social impact.",
       tech: ["React JS", "Tailwind CSS", "EmailJS", "React-Hook-Form", "Vercel", "GoDaddy"],
       image: jkjsFoundation,
-      liveLink: "https://www.jkjksfoundation.com/",
+      liveLink: "https://www.jkjsfoundation.com/",
       githubLink: "https://github.com/mprerna624/JKJS-NGO",
       highlights: [
         "Responsive layout using React and Tailwind CSS",
