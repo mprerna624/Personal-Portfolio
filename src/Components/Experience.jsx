@@ -6,7 +6,7 @@ import resume from "../assets/Resume_Prerna_Mittal.pdf";
 const Experience = () => {
   const experiences = [
     {
-      title: "Frontend Developer Intern",
+      title: "Frontend Developer",
       company: "BeyondChats",
       website: null,
       period: "Feb 2025 - May 2025",

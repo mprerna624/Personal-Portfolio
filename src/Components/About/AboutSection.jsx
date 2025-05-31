@@ -7,7 +7,7 @@ const AboutSection = () => {
   const cards = [
     {
       title: "Frontend Expertise",
-      description: "Proficient in React, Redux Toolkit, and modern CSS frameworks like Tailwind and Bootstrap. I create responsive interfaces with a focus on performance and accessibility.",
+      description: "Proficient in React, Redux Toolkit, and modern CSS frameworks and libraries like Tailwind CSS and Shadcn/UI. I create responsive interfaces with a focus on performance and accessibility.",
       Icon: Code,
       variant: "primary",
       circleSize: "small"
@@ -21,7 +21,7 @@ const AboutSection = () => {
     },
     {
       title: "Recent Work",
-      description: "During my internship at BeyondChats, I built a fully responsive onboarding site from scratch using Vite, Tailwind CSS & Shadcn/UI, migrated a CRA+MUI v6 Dashboard project to Vite + MUI v7, and refactored components incrementally to Tailwind & Shadcn/UI while translating Figma designs into pixel-perfect React components.",
+      description: "In my previous company BeyondChats, I built a fully responsive onboarding site from scratch using Vite, Tailwind CSS & Shadcn/UI, migrated a CRA+MUI v6 Dashboard project to Vite + MUI v7, and refactored components incrementally to Tailwind & Shadcn/UI while translating Figma designs into pixel-perfect React components.",
       Icon: Globe,
       variant: "secondary",
       circleSize: "large"
